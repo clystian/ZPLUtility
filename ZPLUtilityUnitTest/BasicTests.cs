@@ -127,36 +127,6 @@ namespace ZPLUtilityUnitTest
         }
 
         [TestMethod]
-        public void DownloadGraphics()
-        {
-            var elements = new List<ZPLElementBase>();
-            elements.Add(new ZPLGraphicBox(0, 0, 100, 100, 4));
-
-            elements.Add(new ZPLDownloadGraphics('R', "SAMPLE", "GRC", new System.Drawing.Bitmap("p.jpg")));
-            elements.Add(new ZPLRecallGraphic(100, 100, 'R', "SAMPLE", "GRC"));
-
-            var renderEngine = new ZPLEngine(elements);
-            var output = renderEngine.ToZPLString(new ZPLRenderOptions() { AddEmptyLineBeforeElementStart = true, TargetPrintDPI = 200, SourcePrintDPI = 200 });
-
-            Console.WriteLine(output);
-        }
-
-        [TestMethod]
-        public void DownloadObjets()
-        {
-            var elements = new List<ZPLElementBase>();
-
-            elements.Add(new ZPLGraphicBox(0, 0, 100, 100, 4));
-            elements.Add(new ZPLDownloadObjects('R', "SAMPLE.PNG", new System.Drawing.Bitmap("sample.bmp")));
-            elements.Add(new ZPLImageMove(100, 100, 'R', "SAMPLE", "PNG"));
-
-            var renderEngine = new ZPLEngine(elements);
-            var output = renderEngine.ToZPLString(new ZPLRenderOptions() { AddEmptyLineBeforeElementStart = true, TargetPrintDPI = 300, SourcePrintDPI = 200 });
-
-            Console.WriteLine(output);
-        }
-
-        [TestMethod]
         public void WithoutAutoElements()
         {
             var elements = new List<ZPLElementBase>();
